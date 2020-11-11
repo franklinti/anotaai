@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#FFFFFFFF</color>
+    <color name="greenEscuro">#FFFFFFFF</color>
+    <color name="teal_200">#FFFFFF</color>
+    <color name="teal_700">#FFFFFFFF</color>
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Color Cadastro - Logiin - intro cadastro-->
+    <color name="cadastroPrimary">#358CBE</color>
+    <color name="cadastroPrimaryDark">#4EB3ED</color>
+    <color name="cadastroAccent">#96CEEE</color>
+    <!-- Color Despesa-->
+    <color name="DespesaPrimary">#CB4444</color>
+    <color name="DespesaPrimaryDark">#CB4444</color>
+    <color name="DespesaAccent">#F26B6B</color>
+    <!-- Color Receita-->
+    <color name="ReceitaPrimary">#44CB51</color>
+    <color name="ReceitaPrimaryDark">#44CB51</color>
+    <color name="ReceitaAccent">#82F26B</color>
+
+</resources>

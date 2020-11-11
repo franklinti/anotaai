@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AnotaAi</string>
+    <string name="intro1">Total da conta.</string>
+    <string name="intro2">Grupo ou Individual.</string>
+    <string name="intro_cadastro">Realize seu cadastro.</string>
+    <string name="intro_cadastro1">Junte-se a mais de meio milhao de pessoas.</string>
+    <string name="intro_cadastrobtn">Cadastre-se</string>
+    <string name="intro_cadastro2">Já tenho uma conta.</string>
+    <string name="tela_cadastro">Crie sua conta grátis.</string>
+    <string name="tela_cadastrobtn">Cadastrar</string>
+    <string name="tela_cadastrotext">Termos de uso</string>
+    <string name="tela_principaltextresumo">Resumo</string>
+    <string name="tela_receitavalor">R$ 0.00</string>
+    <string name="tela_receitadata">01/01/2020</string>
+    <string name="tela_receitacategoria">Categoria</string>
+    <string name="tela_receitadescricao">Descrição</string>
+</resources>
