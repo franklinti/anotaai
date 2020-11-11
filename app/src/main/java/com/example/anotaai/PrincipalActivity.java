@@ -286,9 +286,9 @@ public class PrincipalActivity extends AppCompatActivity
                 //carrega dados gastos
                 progressBarGastos(formatDespesasTotal);
 
-                Log.i("","despesa"+formatDespesasTotal);
-                Log.i("","receita"+formatReceitaTotal);
-                Log.i("","saldo"+formatResultadoGastos);
+             //   Log.i("","despesa"+formatDespesasTotal);
+             //   Log.i("","receita"+formatReceitaTotal);
+             //   Log.i("","saldo"+formatResultadoGastos);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
