@@ -23,27 +23,38 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
+
+import java.text.DecimalFormat;
 
 public class ReceitaActivity extends AppCompatActivity
         implements View.OnClickListener {
 
-    private TextView cValor,cData;
-    private TextInputEditText  cCategoria, cDescricao;
+    private TextView cValor, cData;
+    private TextInputEditText cCategoria, cDescricao;
     FloatingActionButton fab;
-    private double receitaTotal = 0.00;
-    private ValueEventListener valueEventListenerUsuario;
+    private double receitaTotal = 0.0;
     Conta novaConta = new Conta();
     Usuario usuario = new Usuario();
     ContaDAO contaDAO = new ContaDAO();
     private FirebaseAuth firebaseAuth;
     private FirebaseUser idUsuarioAtual;
-    private String id;
+    private String idUsuario;
+    String mesAno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receita);
         iniciarComponentes();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+       // recuperarReceitas();
     }
 
     public void iniciarComponentes() {
@@ -53,27 +64,20 @@ public class ReceitaActivity extends AppCompatActivity
         cData.setText(DateCustom.getData());
         cCategoria = findViewById(R.id.activityreceitacategoria);
         cDescricao = findViewById(R.id.activityreceitadescricao);
+
         fab = findViewById(R.id.fabsalvarreceita);
         fab.setOnClickListener(this);
 
-
         firebaseAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
         idUsuarioAtual = firebaseAuth.getCurrentUser();
-        id = idUsuarioAtual.getUid();
+        idUsuario = idUsuarioAtual.getUid();
         gerarId();
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        recuperarReceitaTotal();
-    }
-
     public void gerarId() {
         DatabaseReference dataKey = ConfiguracaoFirebase.getDatabaseReference();
         novaConta.setId(dataKey.push().getKey());
         novaConta.setTipo("r");
-        usuario.setId(id);
+        usuario.setId(idUsuario);
     }
 
     @Override
@@ -85,13 +89,12 @@ public class ReceitaActivity extends AppCompatActivity
         }
     }
 
-
     public void validarCampos() {
         if (!cValor.getText().toString().isEmpty()) {
             if (!cData.getText().toString().isEmpty()) {
                 if (!cCategoria.getText().toString().isEmpty()) {
                     if (!cDescricao.getText().toString().isEmpty()) {
-                        salvar();
+                        salvarReceita();
                     } else {
                         Mensagem.mensagem(this, "Insira descricao");
                     }
@@ -106,58 +109,49 @@ public class ReceitaActivity extends AppCompatActivity
         }
     }
 
-    public void salvar() {
+    public void salvarReceita() {
         novaConta.setValor(Double.parseDouble(cValor.getText().toString()));
-        // Calendar calendar = null;
         String data = cData.getText().toString();
-        String mesAno = DateCustom.dataEscolhida(data);
+        mesAno = DateCustom.dataEscolhida(data);
         novaConta.setData(mesAno);
         novaConta.setCategoria(cCategoria.getText().toString());
         novaConta.setDescricao(cDescricao.getText().toString());
-        //soma campo receita e atualiza
-        // Log.i("",""+receitaTotal);
-        // Log.i("",""+novaConta.getValor());
-        double receitaAtualizada = receitaTotal + novaConta.getValor();
-        // Log.i("",""+receitaAtualizada);
-        atualizaReceita(receitaAtualizada);
-
-        ContaDAO contaDAO = new ContaDAO();
-        contaDAO.salvar(usuario, novaConta);
+        contaDAO.salvarReceitas(usuario, novaConta);
+        contaDAO.salvarResumoContas(usuario,novaConta);
+      //  double valor = receitaTotal + novaConta.getValor();
+      //  DecimalFormat decimalFormat = new DecimalFormat("#.##");
+      //  String formatValor = decimalFormat.format(valor);
+      //  atualizaReceita(Double.parseDouble(formatValor));
         finish();
     }
-
-    public void recuperarReceitaTotal() {
-        DatabaseReference dbrrrt = ConfiguracaoFirebase.getDatabaseReference()
-                .child("usuarios")
-                .child(id);
-        Log.i("onStop", "evento acionado");
-        valueEventListenerUsuario = dbrrrt.addValueEventListener(new ValueEventListener() {
+    /*
+    public double recuperarReceitas() {
+      //  String d  = DateCustom.getData();
+      //  String mesAnoEscolhido = DateCustom.dataEscolhida(d);
+       // Log.i("","DATA"+mesAnoEscolhido);
+        DatabaseReference dbReferenceReceitas = ConfiguracaoFirebase.getDatabaseReference()
+                .child("saldo")
+                .child(idUsuario);
+      dbReferenceReceitas.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Usuario usuario = snapshot.getValue(Usuario.class);
-                Log.i("Receita", "Dado :" + usuario.getReceitaTotal());
-                receitaTotal += usuario.getReceitaTotal();
+                if(snapshot.exists()) {
+                        Conta conta = snapshot.getValue(Conta.class);
+                        receitaTotal = conta.getReceitaTotal();
+                }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 error.getMessage();
             }
         });
+      return receitaTotal;
     }
 
     private void atualizaReceita(double receitaAtualizada) {
         DatabaseReference dbrar = ConfiguracaoFirebase.getDatabaseReference()
-                .child("usuarios").child(id);
+                .child("saldo").child(idUsuario);
         dbrar.child("receitaTotal").setValue(receitaAtualizada);
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("onStop", "evento removido");
-        DatabaseReference databaseReference = ConfiguracaoFirebase.getDatabaseReference();
-        databaseReference.removeEventListener(valueEventListenerUsuario);
-    }
-
+*/
 }

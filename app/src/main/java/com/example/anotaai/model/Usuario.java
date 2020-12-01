@@ -1,14 +1,15 @@
 package com.example.anotaai.model;
 
+import com.example.anotaai.ReceitaActivity;
 import com.google.firebase.database.Exclude;
 
 public class Usuario {
     private String id;
     private String nome;
+    private String sobrenome;
     private String email;
     private String senha;
-    private Double receitaTotal = 0.00;
-    private Double despesaTotal = 0.00;
+
 
     public Usuario() {
     }
@@ -29,6 +30,14 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -46,19 +55,16 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Double getReceitaTotal() {
-        return receitaTotal;
+    /*
+
+    //dados cartao de credito
+    public Double getCreditoTotal() {
+        return creditoTotal;
     }
 
-    public void setReceitaTotal(Double receitaTotal) {
-        this.receitaTotal = receitaTotal;
+    public void setCreditoTotal(Double creditoTotal) {
+        this.creditoTotal = creditoTotal;
     }
 
-    public Double getDespesaTotal() {
-        return despesaTotal;
-    }
-
-    public void setDespesaTotal(Double despesaTotal) {
-        this.despesaTotal = despesaTotal;
-    }
+     */
 }

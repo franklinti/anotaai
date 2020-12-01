@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnotaAi">
-        <activity android:name=".MainActivity"
+        <activity android:name=".SalarioActivity"></activity>
+        <activity android:name=".CalendarioActivity" />
+        <activity
+            android:name=".CartaoCreditoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ThemeDespesa" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".adapter.AdapterHistoricoActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".adapter.AdapterHistoricoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CadastroActivity"
             android:screenOrientation="portrait"
@@ -31,13 +39,14 @@
             android:name=".activity.DespesaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ThemeDespesa" />
-        <activity android:name=".ReceitaActivity"
+        <activity
+            android:name=".ReceitaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ThemeReceita" />
         <activity
             android:name=".PrincipalActivity"
-            android:theme="@style/ThemePrincipal"
-            />
+            android:screenOrientation="portrait"
+            android:theme="@style/ThemePrincipal" />
     </application>
 
 </manifest>

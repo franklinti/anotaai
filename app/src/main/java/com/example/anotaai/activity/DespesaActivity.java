@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.anotaai.PrincipalActivity;
 import com.example.anotaai.R;
+import com.example.anotaai.ReceitaActivity;
 import com.example.anotaai.config.ConfiguracaoFirebase;
 import com.example.anotaai.dao.ContaDAO;
 import com.example.anotaai.helper.DateCustom;
@@ -24,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+
 public class DespesaActivity extends AppCompatActivity
         implements View.OnClickListener {
 
@@ -31,14 +35,15 @@ public class DespesaActivity extends AppCompatActivity
     private TextInputEditText cCategoria, cDescricao;
     FloatingActionButton fab;
     private double despesaTotal = 0.0;
+    private double receitaTotal = 0.0;
     private ValueEventListener valueEventListenerUsuario;
     Conta novaConta = new Conta();
     Usuario usuario = new Usuario();
     ContaDAO contaDAO = new ContaDAO();
     private FirebaseAuth firebaseAuth;
     private FirebaseUser idUsuarioAtual;
-    private String id;
-
+    private String idUsuario;
+    String mesAno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,25 +58,27 @@ public class DespesaActivity extends AppCompatActivity
         cData.setText(DateCustom.getData());
         cCategoria = findViewById(R.id.activitydespesacategoria);
         cDescricao = findViewById(R.id.activitydespesadescricao);
+
         fab = findViewById(R.id.fabsalvardespesa);
         fab.setOnClickListener(this);
+
         firebaseAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
         idUsuarioAtual = firebaseAuth.getCurrentUser();
-        id = idUsuarioAtual.getUid();
+        idUsuario = idUsuarioAtual.getUid();
         geraId();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        recuperarDespesaTotal();
+      //  recuperarDespesas();
     }
 
     public void geraId() {
         DatabaseReference dataKey = ConfiguracaoFirebase.getDatabaseReference();
         novaConta.setId(dataKey.push().getKey());
         novaConta.setTipo("d");
-        usuario.setId(id);
+        usuario.setId(idUsuario);
     }
 
     @Override
@@ -82,13 +89,13 @@ public class DespesaActivity extends AppCompatActivity
                 break;
         }
     }
-//inserir regex no campo data
+
     public void validarCampos() {
         if (!cValor.getText().toString().isEmpty()) {
             if (!cData.getText().toString().isEmpty()) {
                 if (!cCategoria.getText().toString().isEmpty()) {
                     if (!cDescricao.getText().toString().isEmpty()) {
-                        salvar();
+                        salvarDespesa();
                     } else {
                         Mensagem.mensagem(this, "Insira descricao");
                     }
@@ -103,35 +110,36 @@ public class DespesaActivity extends AppCompatActivity
         }
     }
 
-    public void salvar() {
+    public void salvarDespesa() {
         novaConta.setValor(Double.parseDouble(cValor.getText().toString()));
         String data = cData.getText().toString();
-        String mesAno = DateCustom.dataEscolhida(data);
+        mesAno = DateCustom.dataEscolhida(data);
         novaConta.setData(mesAno);
         novaConta.setCategoria(cCategoria.getText().toString());
         novaConta.setDescricao(cDescricao.getText().toString());
-        // Log.i("",""+despesaTotal);
-        // Log.i("",""+novaConta.getValor());
-        double despesaAtualizada = despesaTotal + novaConta.getValor();
-        // Log.i("",""+despesaAtualizada);
-        atualizaDespesa(despesaAtualizada);
-        contaDAO.salvar(usuario, novaConta);
+        contaDAO.salvarDespesas(usuario, novaConta);
+        contaDAO.salvarResumoContas(usuario,novaConta);
+      //  double valor = despesaTotal + novaConta.getValor();
+      //  DecimalFormat decimalFormat = new DecimalFormat("#.##");
+      //  String formatValor = decimalFormat.format(valor);
+      //  atualizaDespesa(Double.parseDouble(formatValor));
         finish();
     }
-
-    public void recuperarDespesaTotal() {
-        DatabaseReference dbrrdt = ConfiguracaoFirebase.getDatabaseReference()
-                .child("usuarios")
-                .child(id);
-        Log.i("onStop", "evento acionado");
-        valueEventListenerUsuario = dbrrdt.addValueEventListener(new ValueEventListener() {
+/*
+    public void recuperarDespesas() {
+       // String d  = DateCustom.getData();
+       // String mesAnoEscolhido = DateCustom.dataEscolhida(d);
+        DatabaseReference dbReferenceDespesas = ConfiguracaoFirebase.getDatabaseReference()
+                .child("saldo")
+                .child(idUsuario);
+        valueEventListenerUsuario = dbReferenceDespesas.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Usuario usuario = snapshot.getValue(Usuario.class);
-                Log.i("Despesa", "Dado :" + usuario.getDespesaTotal());
-                despesaTotal += usuario.getDespesaTotal();
+                if(snapshot.exists()){
+                        Conta conta = snapshot.getValue(Conta.class);
+                        despesaTotal = conta.getDespesaTotal();
+                }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 error.getMessage();
@@ -141,16 +149,10 @@ public class DespesaActivity extends AppCompatActivity
 
     public void atualizaDespesa(double despesaAtualizada) {
         DatabaseReference dbrad = ConfiguracaoFirebase.getDatabaseReference()
-                .child("usuarios").child(id);
+                .child("saldo").child(idUsuario);
         dbrad.child("despesaTotal").setValue(despesaAtualizada);
-
     }
+*/
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("onStop", "evento removido");
-        DatabaseReference databaseReference = ConfiguracaoFirebase.getDatabaseReference();
-        databaseReference.removeEventListener(valueEventListenerUsuario);
-    }
+
 }

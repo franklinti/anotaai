@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,10 +14,14 @@ import android.widget.Toast;
 
 import com.example.anotaai.PrincipalActivity;
 import com.example.anotaai.R;
+import com.example.anotaai.ReceitaActivity;
 import com.example.anotaai.config.ConfiguracaoFirebase;
+import com.example.anotaai.dao.ContaDAO;
 import com.example.anotaai.dao.UsuarioDAO;
 import com.example.anotaai.helper.Base64Custom;
+import com.example.anotaai.helper.DateCustom;
 import com.example.anotaai.helper.Mensagem;
+import com.example.anotaai.model.Conta;
 import com.example.anotaai.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,7 +34,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private EditText campoNome, campoEmail,campoSenha;
+    private EditText campoNome,campoSobrenome,campoEmail,campoSenha;
     private Button buttonCadastrar;
     private Usuario user = new Usuario();
     private FirebaseAuth firebaseAuth;
@@ -47,6 +52,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
     public void iniciarComponentes(){
         campoNome = findViewById(R.id.editNome);
+        campoSenha = findViewById(R.id.editSobrenome);
         campoEmail = findViewById(R.id.editEmailLogin);
         campoSenha = findViewById(R.id.editSenhaLogin);
         buttonCadastrar = findViewById(R.id.btnCadastro);
@@ -57,7 +63,7 @@ public class CadastroActivity extends AppCompatActivity {
                 String textEmail = campoEmail.getText().toString();
                 String textSenha = campoSenha.getText().toString();
 
-                if(!textNome.isEmpty() && !textEmail.isEmpty() && !textSenha.isEmpty()){
+                if(!campoNome.getText().toString().isEmpty()){
                     user.setNome(textNome);
                     String email = Base64Custom.codificarBase64(textEmail);
                     user.setEmail(email);
@@ -84,15 +90,13 @@ public class CadastroActivity extends AppCompatActivity {
                    user.setId(idUsuario);
                    UsuarioDAO usuarioDAO = new UsuarioDAO();
                    if(usuarioDAO.salvar(user)){
-                        Mensagem.mensagem(CadastroActivity.this,"Usuario cadastrado!");
-                        abrirTelaPrincipal();
+                       Mensagem.mensagem(CadastroActivity.this,"Usuario cadastrado!");
+                       abrirTelaPrincipal();
                    }else{
                        Mensagem.mensagem(CadastroActivity.this,"Usuario não cadastrado!");
                        firebaseAuth.getCurrentUser().delete();
                        return;
                    }
-
-                  //  finish();
                 }else{
                     String excecao="";
                     try{
@@ -115,6 +119,7 @@ public class CadastroActivity extends AppCompatActivity {
             }
         });
     }
+
     public void abrirTelaPrincipal(){
         startActivity(new Intent(this, PrincipalActivity.class));
         finishAffinity();

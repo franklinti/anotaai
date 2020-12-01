@@ -9,9 +9,36 @@
     <string name="tela_cadastro">Crie sua conta grátis.</string>
     <string name="tela_cadastrobtn">Cadastrar</string>
     <string name="tela_cadastrotext">Termos de uso</string>
-    <string name="tela_principaltextresumo">Resumo</string>
-    <string name="tela_receitavalor">R$ 0.00</string>
+    <string name="tela_receitavalor">R$0.00</string>
     <string name="tela_receitadata">01/01/2020</string>
     <string name="tela_receitacategoria">Categoria</string>
     <string name="tela_receitadescricao">Descrição</string>
+    <string name="tela_despesavalor">R$ 0.00</string>
+    <string name="tela_despesadata">01/01/2020</string>
+    <string name="tela_despesacategoria">Categoria</string>
+    <string name="tela_despesadescricao">Descrição</string>
+    <string name="tela_principaltextcarregando">Carregando...</string>
+    <string name="tela_principaltextvalor">R$0.00</string>
+    <string name="tela_principaltextsaldogeral">Saldo</string>
+    <string name="tela_principaltextresumocustos">Resumo Custos</string>
+    <string name="tela_principaltextgastossuperfluos">Gastos Supérfluo</string>
+    <string name="tela_principaltextcartaocredito">Cartão crédito</string>
+    <string name="tela_principaltextresumo">Resumo Anual</string>
+
+
+    <string name="tela_principalfabsalario">Salário</string>
+    <string name="tela_principalfabgastos">Gastos</string>
+    <string name="tela_cartaocreditovalor">R$ 0.00</string>
+    <string name="tela_cartaocreditodata">01/01/2020</string>
+    <string name="tela_cartaocreditocategoria">Fecha dia</string>
+    <string name="tela_cartaocreditodescricao">Melhor dia compra</string>
+
+    <style name="tela_principalText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/cadastroPrimary</item>
+    </style>
+
+    <string name="Confirmar">Confirmar</string>
+    <string name="Cancelar">Cancelar</string>
+
 </resources>

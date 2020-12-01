@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".PrincipalActivity">
 
     <include
@@ -16,18 +15,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/activityprincipalsaldacao"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="26dp"
         android:gravity="center_horizontal"
         android:padding="8dp"
-        android:text="Carregando..."
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/progressBarSaldo"
-        app:layout_constraintStart_toStartOf="@+id/progressBarSaldo"
+        android:text="@string/tela_principaltextcarregando"
+        android:textColor="@color/cadastroPrimary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include3" />
 
     <ProgressBar
@@ -35,202 +34,418 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:elevation="8dp"
         android:indeterminateOnly="false"
         android:progressDrawable="@drawable/circle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/progressBar3"
         app:layout_constraintTop_toBottomOf="@+id/activityprincipalsaldacao" />
 
     <TextView
         android:id="@+id/activityprincipaltextsaldo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="#000000"
-        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:text="@string/tela_principaltextvalor"
+        android:textColor="@color/cadastroPrimary"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/progressBarSaldo"
         app:layout_constraintEnd_toEndOf="@+id/progressBarSaldo"
         app:layout_constraintStart_toStartOf="@+id/progressBarSaldo"
-        app:layout_constraintTop_toTopOf="@+id/progressBarSaldo" />
+        app:layout_constraintTop_toBottomOf="@+id/activityprincipalsaldacao" />
+
+    <ImageButton
+        android:id="@+id/imgBtnAddSaldo"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/cadastroAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBarSaldo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progressBarSaldo"
+        app:layout_constraintVertical_bias="0.0"
+        fab:srcCompat="@drawable/ic_add" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Saldo geral"
+        android:text="@string/tela_principaltextsaldogeral"
         android:textColor="@color/cadastroPrimary"
         app:layout_constraintEnd_toEndOf="@+id/progressBarSaldo"
         app:layout_constraintStart_toStartOf="@+id/progressBarSaldo"
         app:layout_constraintTop_toBottomOf="@+id/progressBarSaldo" />
 
-    <ProgressBar
-        android:id="@+id/progressBarGastos"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:elevation="8dp"
-        android:indeterminateOnly="false"
-        android:progressDrawable="@drawable/circledespesa"
-        app:layout_constraintBottom_toTopOf="@+id/divider7"
+        android:layout_marginTop="8dp"
+        android:text="@string/tela_principaltextresumocustos"
+        android:textColor="#D34F4F"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include3" />
 
-    <TextView
-        android:id="@+id/activityprincipaltextgastos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:padding="8dp"
-        android:text="R$ 0.00"
-        android:textColor="@color/DespesaPrimary"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBarGastos"
-        app:layout_constraintEnd_toEndOf="@+id/progressBarGastos"
-        app:layout_constraintStart_toStartOf="@+id/progressBarGastos"
-        app:layout_constraintTop_toTopOf="@+id/progressBarGastos" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gastos"
-        android:textColor="@color/cadastroPrimary"
-        app:layout_constraintEnd_toEndOf="@+id/progressBarGastos"
-        app:layout_constraintStart_toStartOf="@+id/progressBarGastos"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarGastos" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:elevation="8dp"
-        android:indeterminateOnly="false"
-        android:progressDrawable="@drawable/circledespesa"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintStart_toEndOf="@+id/progressBarGastos"
-        app:layout_constraintTop_toBottomOf="@+id/include3"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contas Fixas"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar"
-        app:layout_constraintStart_toStartOf="@+id/progressBar"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-    <ProgressBar
-        android:id="@+id/progressBar3"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="8dp"
-        android:elevation="8dp"
-        android:indeterminateOnly="false"
-        android:progressDrawable="@drawable/circledespesa"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar4"
-        app:layout_constraintStart_toEndOf="@+id/progressBarGastos"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Feira do Mês"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar3"
-        app:layout_constraintStart_toStartOf="@+id/progressBar3"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar3" />
-
-    <ProgressBar
-        android:id="@+id/progressBar4"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:indeterminateOnly="false"
-        android:progressDrawable="@drawable/circledespesa"
-        app:layout_constraintBottom_toTopOf="@+id/divider7"
-        app:layout_constraintStart_toEndOf="@+id/progressBarGastos"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.78" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cartão Crédito"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar4"
-        app:layout_constraintStart_toStartOf="@+id/progressBar4"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar4" />
-
-    <View
-        android:id="@+id/divider7"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/cadastroPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-        android:id="@+id/calendarview"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider7"
-        app:mcv_selectionColor="#00F"
-        app:mcv_showOtherDates="all"
-        app:mcv_tileSize="50dp">
-
-    </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
-
     <View
         android:id="@+id/divider6"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cadastroPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/activityprincipalsaldacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clickable="false"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider6"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imgBtnAddGastosSuperfluo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/DespesaAccent"
+                android:elevation="5dp"
+                app:srcCompat="@drawable/ic_remove" />
+
+            <ImageButton
+                android:id="@+id/imgBtnAddGastosCartaoCredito"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/DespesaAccent"
+                android:elevation="5dp"
+                app:srcCompat="@drawable/ic_remove" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/DespesaAccent"
+                android:elevation="5dp"
+                app:srcCompat="@drawable/ic_remove" />
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/DespesaAccent"
+                android:elevation="5dp"
+                app:srcCompat="@drawable/ic_remove" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarSaldo"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/divider6"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activityprincipaltextgastos"
+                    style="@style/tela_principalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/tela_principaltextgastossuperfluos" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="0"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    style="@style/tela_principalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tela_principaltextcartaocredito" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="TextView"
+                        android:textColor="@color/cadastroPrimary"
+                        android:textSize="8sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarGastosCartaoCredito"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_weight="1"
+                        android:progressDrawable="@drawable/progressbargastossuperfluo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    style="@style/tela_principalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feira do Mês" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewFeiraDoMes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="TextView"
+                        android:textSize="8sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_weight="1"
+                        android:progressDrawable="@drawable/progressbargastossuperfluo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/tela_principalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Custo Fixo" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewCustoFixo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="TextView"
+                        android:textSize="8sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar4"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_weight="1"
+                        android:progressDrawable="@drawable/progressbargastossuperfluo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/cadastroAccent"
+        android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarview" />
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cadastroPrimary" />
+
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                android:id="@+id/calendario"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                app:mcv_selectionColor="#00F"
+                app:mcv_showOtherDates="all"
+                app:mcv_tileSize="40dp">
+
+            </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cadastroPrimary" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:padding="8dp"
-        android:text="@string/tela_principaltextresumo"
-        android:textColor="@color/cadastroPrimary"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider6" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="@string/tela_principaltextresumo"
+                android:textColor="@color/cadastroPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/activityprincipaltextgastosurperfluo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tela_principaltextvalor"
+                android:textColor="@color/DespesaPrimary"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progressBarGastosSuperfluo"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginEnd="209dp"
+        android:indeterminateOnly="false"
+        android:max="10000"
+        android:progressDrawable="@drawable/verticalprogressbar"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView5"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activityprincipalrecyclerdespesaspormes"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:padding="4dp" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activityprincipalrecyclerhistorico"
@@ -240,108 +455,109 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/white"
+        android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/cardView5">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent"
-        fab:menu_animationDelayPerItem="50"
-        fab:menu_backgroundColor="@android:color/transparent"
-        fab:menu_buttonSpacing="0dp"
-        fab:menu_colorNormal="#DA4336"
-        fab:menu_colorPressed="#E75043"
-        fab:menu_colorRipple="#99FFFFFF"
-        fab:menu_fab_label="Menu"
-        fab:menu_fab_size="normal"
-        fab:menu_icon="@drawable/fab_add"
-        fab:menu_labels_colorNormal="#333333"
-        fab:menu_labels_colorPressed="#444444"
-        fab:menu_labels_colorRipple="#66FFFFFF"
-        fab:menu_labels_cornerRadius="3dp"
-        fab:menu_labels_ellipsize="none"
-        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        fab:menu_labels_margin="0dp"
-        fab:menu_labels_maxLines="-1"
-        fab:menu_labels_padding="8dp"
-        fab:menu_labels_paddingBottom="4dp"
-        fab:menu_labels_paddingLeft="8dp"
-        fab:menu_labels_paddingRight="8dp"
-        fab:menu_labels_paddingTop="4dp"
-        fab:menu_labels_position="left"
-        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-        fab:menu_labels_showShadow="true"
-        fab:menu_labels_singleLine="false"
-        fab:menu_labels_textColor="#FFFFFF"
-        fab:menu_labels_textSize="14sp"
-        fab:menu_openDirection="up"
-        fab:menu_shadowColor="#66000000"
-        fab:menu_shadowRadius="4dp"
-        fab:menu_shadowXOffset="1dp"
-        fab:menu_shadowYOffset="3dp"
-        fab:menu_showShadow="true">
+    <!--
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_despesa"
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fabmenuprincipal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_remove"
-            fab:fab_colorNormal="@color/DespesaPrimary"
-            fab:fab_label="Gastos
-"
-            fab:fab_size="mini"
-            fab:menu_icon="@drawable/ic_add" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/fab_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.935"
+            app:layout_constraintStart_toStartOf="parent"
+            fab:menu_animationDelayPerItem="50"
+            fab:menu_backgroundColor="@android:color/transparent"
+            fab:menu_buttonSpacing="0dp"
+            fab:menu_colorNormal="#DA4336"
+            fab:menu_colorPressed="#E75043"
+            fab:menu_colorRipple="#99FFFFFF"
+            fab:menu_fab_label="@string/tela_principaltextmenu"
+            fab:menu_fab_size="normal"
+            fab:menu_labels_colorNormal="#333333"
+            fab:menu_labels_colorPressed="#444444"
+            fab:menu_labels_colorRipple="#66FFFFFF"
+            fab:menu_labels_cornerRadius="3dp"
+            fab:menu_labels_ellipsize="none"
+            fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+            fab:menu_labels_margin="0dp"
+            fab:menu_labels_maxLines="-1"
+            fab:menu_labels_padding="8dp"
+            fab:menu_labels_paddingBottom="4dp"
+            fab:menu_labels_paddingLeft="8dp"
+            fab:menu_labels_paddingRight="8dp"
+            fab:menu_labels_paddingTop="4dp"
+            fab:menu_labels_position="left"
+            fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+            fab:menu_labels_showShadow="true"
+            fab:menu_labels_singleLine="false"
+            fab:menu_labels_textColor="#FFFFFF"
+            fab:menu_labels_textSize="14sp"
+            fab:menu_openDirection="up"
+            fab:menu_shadowColor="#66000000"
+            fab:menu_shadowRadius="4dp"
+            fab:menu_shadowXOffset="1dp"
+            fab:menu_shadowYOffset="3dp"
+            fab:menu_showShadow="true">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_receita"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_add"
-            fab:fab_colorNormal="@color/ReceitaPrimary"
-            fab:fab_label="Receita"
-            fab:fab_size="mini"
-            fab:menu_icon="@drawable/ic_add" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_contasFixas"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_add"
-            fab:fab_colorNormal="@color/ReceitaPrimary"
-            fab:fab_label="Contas Fixas"
-            fab:fab_size="mini"
-            fab:menu_icon="@drawable/ic_add" />
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_cartaocredito"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_remove"
+                fab:fab_colorNormal="@color/DespesaPrimary"
+                fab:fab_label="Cartão de Crédito"
+                fab:fab_size="mini" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_feiradoMes"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_add"
-            fab:fab_colorNormal="@color/ReceitaPrimary"
-            fab:fab_label="Feira do Mês"
-            fab:fab_size="mini"
-            fab:menu_icon="@drawable/ic_add" />
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_contasFixas"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_add"
+                fab:fab_colorNormal="@color/ReceitaPrimary"
+                fab:fab_label="Contas Fixas"
+                fab:fab_size="mini" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_cartaoCredito"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_add"
-            fab:fab_colorNormal="@color/ReceitaPrimary"
-            fab:fab_label="Cartão de Crédito"
-            fab:fab_size="mini"
-            fab:menu_icon="@drawable/ic_add" />
-    </com.github.clans.fab.FloatingActionMenu>
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_feiradoMes"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_add"
+                fab:fab_colorNormal="@color/ReceitaPrimary"
+                fab:fab_label="Feira do Mês"
+                fab:fab_size="mini"
+                />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_despesa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_remove"
+                fab:fab_colorNormal="@color/DespesaPrimary"
+                fab:fab_label="@string/tela_principalfabgastos"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_receita"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_add"
+                fab:fab_colorNormal="@color/ReceitaPrimary"
+                fab:fab_label="@string/tela_principalfabsalario"
+                fab:fab_size="mini" />
+        </com.github.clans.fab.FloatingActionMenu>
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

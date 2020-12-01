@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginRight="8dp"
+    android:background="#000000"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textAdapterGastos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gastos"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarGastosSuperfluo"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:indeterminateOnly="false"
+            android:max="10000"
+            android:progressDrawable="@drawable/verticalprogressbar" />
+
+        <TextView
+            android:id="@+id/textAdapterMes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mes"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

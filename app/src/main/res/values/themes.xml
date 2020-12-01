@@ -40,4 +40,9 @@
         <item name="colorPrimaryDark">@color/ReceitaPrimaryDark</item>
         <item name="colorAccent">@color/ReceitaAccent</item>
     </style>
+    <style name="ThemeCalendario" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ReceitaPrimary</item>
+        <item name="colorPrimaryDark">@color/ReceitaPrimaryDark</item>
+        <item name="colorAccent">@color/ReceitaAccent</item>
+    </style>
 </resources>
